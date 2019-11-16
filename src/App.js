@@ -13,6 +13,7 @@ class App extends React.Component {
 		this.state = {
 			activePanel: 'home',
 			fetchedUser: null,
+			clientVersion: null
 		};
 	}
 
@@ -21,6 +22,9 @@ class App extends React.Component {
 			switch (e.detail.type) {
 				case 'VKWebAppGetUserInfoResult':
 					this.setState({ fetchedUser: e.detail.data });
+					break;
+				case 'VKWebAppGetClientVersionResult':
+					this.setState({ clientVersion: e.detail.data});
 					break;
 				default:
 					console.log(e.detail.type);
@@ -36,7 +40,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<View activePanel={this.state.activePanel}>
-				<Home id="home" fetchedUser={this.state.fetchedUser} go={this.go} />
+				<Home id="home" fetchedUser={this.state.fetchedUser} clientVersion={this.state.clientVersion} go={this.go} />
 				<Persik id="persik" go={this.go} />
 			</View>
 		);

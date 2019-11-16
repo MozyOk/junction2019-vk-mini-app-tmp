@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, ListItem, Button, Group, Div, Avatar, PanelHeader } from '@vkontakte/vkui';
 
-const Home = ({ id, go, fetchedUser }) => (
+const Home = ({ id, go, fetchedUser, clientVersion }) => (
 	<Panel id={id}>
 		<PanelHeader>Example</PanelHeader>
 		{fetchedUser &&
@@ -11,7 +11,7 @@ const Home = ({ id, go, fetchedUser }) => (
 				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
 				description={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
 			>
-				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
+				{`${fetchedUser.first_name} ${fetchedUser.last_name} : ${fetchedUser.id} : ${clientVersion.platform}`}
 			</ListItem>
 		</Group>}
 
